@@ -85,8 +85,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="q" data-autocomplete="<%=Url.Action("getLocation", "Jobs")%>" required />
+                        <input type="text" name="q" data-autocomplete="<%=Url.Action("getLocation", "Jobs")%>" required="required" />
                         <%=Html.ValidationMessageFor(m=>m.LocationId)%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="registersubheadings">Frequency
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= Html.DropDownList("SalaryFrequency", new SelectList(((System.Data.DataTable)Session["Frequency"]).Rows as System.Collections.IEnumerable, "[0]", "[1]"), new { @class = "fieldAdv" })%>
+                        <%=Html.ValidationMessageFor(m=>m.SalaryFrequency)%>
                     </td>
                 </tr>
                 <tr>
@@ -105,7 +115,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=Html.EditorFor(m=>m.SalaryMin, new { @maxlength = "100", @class = "fieldAdv" })%>
+                        <%= Html.DropDownList("SalaryCurrency", new SelectList(((System.Data.DataTable)Session["Currencies"]).Rows as System.Collections.IEnumerable, "[0]", "[1]"), new { @class = "fieldAdv" })%>
+                        <%=Html.EditorFor(m=>m.SalaryMin, new { @maxlength = "100", @class = "fieldAdv",required = "required" })%>
                         <%=Html.ValidationMessageFor(m=>m.SalaryMin)%>
                     </td>
                 </tr>
@@ -115,7 +126,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=Html.EditorFor(m=>m.SalaryMax, new { @maxlength = "100", @class = "fieldAdv" })%>
+                        <%= Html.DropDownList("SalaryCurrency", new SelectList(((System.Data.DataTable)Session["Currencies"]).Rows as System.Collections.IEnumerable, "[0]", "[1]"), new { @class = "fieldAdv" })%>
+                        <%=Html.EditorFor(m=>m.SalaryMax, new { @maxlength = "100", @class = "fieldAdv",required = "required" })%>
                         <%=Html.ValidationMessageFor(m=>m.SalaryMax)%>
                     </td>
                 </tr>
@@ -125,7 +137,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=Html.EditorFor(m=>m.ReferenceNo, new { @maxlength = "100", @class = "fieldAdv" })%>
+                        <%=Html.TextBox("ReferenceNo",Session["ReferenceNo"], new { @maxlength = "100", @class = "fieldAdv" })%>
                         <%=Html.ValidationMessageFor(m=>m.ReferenceNo)%>
                     </td>
                 </tr>
@@ -137,6 +149,36 @@
                     <td>
                         <%=Html.EditorFor(m=>m.Title, new { @maxlength = "100", @class = "fieldAdv" })%>
                         <%=Html.ValidationMessageFor(m=>m.Title)%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="registersubheadings">Bullet1
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%=Html.EditorFor(m=>m.Bullet1, new { @maxlength = "100", @class = "fieldAdv" })%>
+                        <%=Html.ValidationMessageFor(m=>m.Bullet1)%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="registersubheadings">Bullet2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%=Html.EditorFor(m=>m.Bullet2, new { @maxlength = "100", @class = "fieldAdv" })%>
+                        <%=Html.ValidationMessageFor(m=>m.Bullet2)%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="registersubheadings">Bullet3
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%=Html.EditorFor(m=>m.Bullet3, new { @maxlength = "100", @class = "fieldAdv" })%>
+                        <%=Html.ValidationMessageFor(m=>m.Bullet3)%>
                     </td>
                 </tr>
                 <tr>
@@ -246,26 +288,29 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="industry" data-autocomplete="<%=Url.Action("getIndustry", "Jobs")%>" required />
+                        <input type="text" name="industry" data-autocomplete="<%=Url.Action("getIndustry", "Jobs")%>" required="required" />
                         <%=Html.ValidationMessageFor(m=>m.JobIndustryId)%>
                     </td>
                 </tr>
                 <tr>
-                    <td class="registersubheadings">JobIndustry SubId
+                    <td class="registersubheadings">JobIndustrySubId
                     </td>
                 </tr>
                 <tr>
+
                     <td>
                         <%=Html.EditorFor(m=>m.JobIndustrySubId, new { @maxlength = "100", @class = "fieldAdv" })%>
                         <%=Html.ValidationMessageFor(m=>m.JobIndustrySubId)%>
                     </td>
                 </tr>
                 <tr>
+                    <td class="registersubheadings">Hot Job
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <%=Html.EditorFor(m=>m.HotJob, new { @maxlength = "100", @class = "fieldAdv" })%>
                         <%=Html.ValidationMessageFor(m=>m.HotJob)%>
-                    </td>
-                    <td class="registersubheadings">Hot Job
                     </td>
                 </tr>
             </table>
@@ -277,16 +322,16 @@
                         <%= Html.AntiForgeryToken() %>
                         <%= Html.ValidationSummary(true) %>
                         <button style="padding: 1px 0px; margin: 5px 0px 5px 50px;">
-                            Post Job
+                            Approve
                         </button>
                         <% } %>
                     </td>
-                    <td><% using (Html.BeginForm("SaveDraft", "Jobs"))
+                    <td><% using (Html.BeginForm("Reset", "Jobs"))
                            { %>
                         <%= Html.AntiForgeryToken() %>
                         <%= Html.ValidationSummary(true) %>
                         <button style="padding: 1px 0px; margin: 5px 0px 5px 50px;">
-                            Save Draft
+                            Reset
                         </button>
                         <% } %>
                     </td>

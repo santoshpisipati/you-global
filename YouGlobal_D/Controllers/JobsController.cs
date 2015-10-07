@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
 using YG_Business;
+using YG_DataAccess;
 using YG_MVC.Models;
 
 namespace YG_MVC.Controllers
@@ -623,7 +624,6 @@ namespace YG_MVC.Controllers
                 model.Summary = "";
                 model.JobContent = "";
                 model.AdFooter = "";
-                model.Status = 1;
                 model.IsApprove = false;
                 model.WebsiteURL = "";
                 model.ClientId = 0;
@@ -687,46 +687,89 @@ namespace YG_MVC.Controllers
             return Json(result3, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult getLocation(string term)
+        public MySqlDataReader getLocation(string term)
         {
             List<string> result = new List<string>();
             MySqlDataReader drLocation = LocationDataProvider.getLocationswithGroupName(term);
+            return drLocation;
+        }
+
+
+        public ActionResult SearchLocationWithId(string term)
+        {
+            KeyValuePair<string, string> kv = new KeyValuePair<string, string>();
+            List<KeyValuePair<string, string>> lst = new List<KeyValuePair<string, string>>();
+            List<string> result = new List<string>();
+            MySqlDataReader drLocation = CommonDataAccess.searchLocation(term);
             while (drLocation.Read())
             {
-                string item = drLocation["name"].ToString();
-                if (!string.IsNullOrEmpty(drLocation["name"].ToString().Trim()))
+                if (!string.IsNullOrEmpty(drLocation["name"].ToString()))
                 {
-                    if (!result.Contains(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#9AC435'>" + drLocation["name"].ToString() + "</span>", drLocation["countryid"].ToString())))
-                        result.Add(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#9AC435'>" + drLocation["name"].ToString() + "</span>", drLocation["countryid"].ToString()));
-                    if (!string.IsNullOrEmpty(drLocation["locationname"].ToString().Trim()))
+                    if (!result.Contains("<span style='color:#9AC435'> > " + drLocation["name"].ToString() + "</span>"))
                     {
-                        item = item + " > " + drLocation["locationname"].ToString();
-                        if (!result.Contains(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#124812'>" + item + "</span>", drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString())))
-                            result.Add(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#124812'>" + item + "</span>", drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString()));
-                        if (!string.IsNullOrEmpty(drLocation["sublocation"].ToString().Trim()))
-                        {
-                            item = item + " > " + drLocation["sublocation"].ToString();
-                            if (!result.Contains(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#51C0EE'>" + item + "</span>", drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString())))
-                                result.Add(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#51C0EE'>" + item + "</span>", drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString()));
-                            if (!string.IsNullOrEmpty(drLocation["subsublocation"].ToString().Trim()))
-                            {
-                                item = item + " > " + drLocation["subsublocation"].ToString();
-                                result.Add(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#0000FF'>" + item + "</span>", drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString() + "," + drLocation["subsublocationid"].ToString()));
-                            }
-                        }
+                        result.Add("<span style='color:#9AC435'> > " + drLocation["name"].ToString() + "</span>");
+                        kv = new KeyValuePair<string, string>(drLocation["countryid"].ToString() + ":1", "<span style='color:#9AC435'> > " + drLocation["name"].ToString() + "</span>");
+                        lst.Add(kv);
                     }
                 }
-
-                if (!string.IsNullOrEmpty(drLocation["groupname"].ToString().Trim()))
+                if (!string.IsNullOrEmpty(drLocation["locationname"].ToString()))
                 {
-                    result.Add(AutoCompleteExtender.CreateAutoCompleteItem("<span style='color:#0000FF'>" + drLocation["groupname"].ToString() + "</span>", drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString() + "," + drLocation["subsublocationid"].ToString() + "," + drLocation["location_groupid"].ToString()));
+                    if (!result.Contains("<span style='color:#124812'> >> " + drLocation["locationname"].ToString() + "</span>"))
+                    {
+                        result.Add("<span style='color:#124812'> >> " + drLocation["locationname"].ToString() + "</span>");
+                        kv = new KeyValuePair<string, string>(drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + ":2", "<span style='color:#124812'> >> " + drLocation["locationname"].ToString() + "</span>");
+                        lst.Add(kv);
+                    }
+                }
+                if (!string.IsNullOrEmpty(drLocation["sublocation"].ToString()))
+                {
+                    if (!result.Contains("<span style='color:#51C0EE'> >>> " + drLocation["sublocation"].ToString() + "</span>"))
+                    {
+                        result.Add("<span style='color:#51C0EE'> >>> " + drLocation["sublocation"].ToString() + "</span>");
+                        kv = new KeyValuePair<string, string>(drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString() + ":3", "<span style='color:#51C0EE'> >>> " + drLocation["sublocation"].ToString() + "</span>");
+                        lst.Add(kv);
+                    }
+                }
+                if (!string.IsNullOrEmpty(drLocation["subsublocation"].ToString()))
+                {
+                    if (!result.Contains("<span style='color:#0000FF'> >>>> " + drLocation["subsublocation"].ToString() + "</span>"))
+                    {
+                        result.Add("<span style='color:#0000FF'> >>>> " + drLocation["subsublocation"].ToString() + "</span>");
+                        kv = new KeyValuePair<string, string>(drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString() + "," + drLocation["subsublocationid"].ToString() + ":4", "<span style='color:#0000FF'> >>>> " + drLocation["subsublocation"].ToString() + "</span>");
+                        lst.Add(kv);
+                    }
+                }
+                if (!string.IsNullOrEmpty(drLocation["groupname"].ToString()))
+                {
+                    if (!result.Contains("<span style='color:#9AC435'> > " + drLocation["groupname"].ToString() + "</span>"))
+                    {
+                        result.Add("<span style='color:#9AC435'> > " + drLocation["groupname"].ToString() + "</span>");
+                        kv = new KeyValuePair<string, string>(drLocation["countryid"].ToString() + "," + drLocation["locationid"].ToString() + "," + drLocation["sublocationid"].ToString() + "," + drLocation["subsublocationid"].ToString() + "," + drLocation["location_groupid"].ToString() + ":5", "<span style='color:#9AC435'> > " + drLocation["groupname"].ToString() + "</span>");
+                        lst.Add(kv);
+                    }
                 }
             }
             drLocation.Close();
             drLocation.Dispose();
-            result.Insert(0, AutoCompleteExtender.CreateAutoCompleteItem("Anywhere", "0,0,0,0"));
-            var result3 = result.Where(s => s.ToLower().Contains(term.ToLower())).Select(w => w).ToList();
+            //result.Insert(0, "- Anywhere -");
+            var result3 = lst.Where(s => s.Value.ToLower().Contains(term.ToLower())).Select(w => w).ToList();
+            kv = new KeyValuePair<string, string>("0", "<span>- Anywhere -</span>");
+            result3.Insert(0, kv);
             return Json(result3, JsonRequestBehavior.AllowGet);
+        }
+
+        public List<string> GetLocationDetails(int groupId)
+        {
+            List<string> result = new List<string>();
+            MySqlDataReader dr = CommonDataAccess.getLocations(groupId);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    result.Add(DataAccess.getString(dr, "locationid"));
+                }
+            }
+            return result;
         }
     }
 }

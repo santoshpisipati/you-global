@@ -1,5 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Main.Master" AutoEventWireup="true"
-    CodeBehind="Sky.master.cs" Inherits="YG_MVC.Views.Shared.Sky" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Main.Master" AutoEventWireup="true"   CodeBehind="Sky.master.cs" Inherits="YG_MVC.Views.Shared.Sky" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>

@@ -156,6 +156,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\YG_Business\bin\Debug\YG_Business.dll</HintPath>
     </Reference>
+    <Reference Include="YG_DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Desktop\YouGlobal\YG_Business\bin\Debug\YG_DataAccess.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BrisbaneTimes-reader-comment.pdf" />

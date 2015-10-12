@@ -1,13 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Sky.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CommissionCalculator._Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="SkyContent">
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1 style="text-align: left">Commission Calculator.</h1>
-            </hgroup>
-        </div>
-    </section>
+    YOU Global - Commission Calculator
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <style type="text/css">
@@ -233,7 +227,7 @@
                             </asp:TableCell>
                             <asp:TableCell HorizontalAlign="Right">
                                 <b>
-                                    <asp:Label runat="server" CssClass="txtbox" Font-Bold="true" ID="f28" Text="USD 68,000"></asp:Label>
+                                    <asp:Label runat="server" Font-Bold="true" ID="f28" Text="USD 68,000"></asp:Label>
                                 </b>
                             </asp:TableCell>
                         </asp:TableRow>
@@ -318,7 +312,7 @@
                             </asp:TableCell>
                             <asp:TableCell HorizontalAlign="Right">
                                 <b>
-                                    <asp:Label runat="server" CssClass="txtbox" Font-Bold="true" ID="f35" Text="USD 68,000"></asp:Label>
+                                    <asp:Label runat="server" CssClass="txtboxnocolor" Font-Bold="true" ID="f35" Text="USD 68,000"></asp:Label>
                                 </b>
                             </asp:TableCell>
                         </asp:TableRow>
@@ -404,7 +398,7 @@
                             </asp:TableCell>
                             <asp:TableCell HorizontalAlign="Right">
                                 <b>
-                                    <asp:Label runat="server" CssClass="txtbox" Font-Bold="true" ID="f42" Text="USD 1,20,000"></asp:Label>
+                                    <asp:Label runat="server" CssClass="txtboxnocolor" Font-Bold="true" ID="f42" Text="USD 1,20,000"></asp:Label>
                                 </b>
                             </asp:TableCell>
                         </asp:TableRow>
@@ -446,7 +440,7 @@
                             </asp:TableCell>
                             <asp:TableCell HorizontalAlign="Center">
                                 <b>
-                                    <asp:Label runat="server" ID="f44"></asp:Label>
+                                    <asp:Label runat="server" CssClass="txtboxnocolor" ID="f44"></asp:Label>
                                 </b>
                             </asp:TableCell>
                         </asp:TableRow>

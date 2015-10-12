@@ -46,8 +46,12 @@
                             <%= Html.ActionLink("Read more...", "AboutUs", "Home", null, new { @class = "title" })%>
     </div>
     <div id="register">
+        <% using (Html.BeginForm("Register", "Account"))
+           { %>
+        <%= Html.AntiForgeryToken() %>
+        <%= Html.ValidationSummary(true) %>
         <%
-            var registerapply = (YouGlobal_D.Models.RegisterModel)Model;
+                   var registerapply = (YouGlobal_D.Models.RegisterModel)Model;
         %>
         <h2 style="vertical-align: central; margin-top: 3%;">Register Here </h2>
         <table style="width: 100%; vertical-align: central; margin-top: 8%;">
@@ -57,7 +61,7 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("firstname", registerapply!=null ? registerapply.FirstName :"", new { @maxlength = "100", @class = "registerQuick" })%>
+                    <%=Html.TextBox("FirstName", registerapply!=null ? registerapply.FirstName :"", new { @maxlength = "100", @class = "registerQuick" })%>
                     <%=Html.ValidationMessageFor(m=>m.FirstName)%>
                 </td>
             </tr>
@@ -67,7 +71,7 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("lastname", registerapply!=null ? registerapply.LastName :"", new { @maxlength = "100", @class = "registerQuick"})%>
+                    <%=Html.TextBox("LastName", registerapply!=null ? registerapply.LastName :"", new { @maxlength = "100", @class = "registerQuick"})%>
                     <%=Html.ValidationMessageFor(m=>m.LastName)%>
                 </td>
             </tr>
@@ -87,7 +91,7 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.Password("password",  registerapply!=null ?registerapply.Password :"", new { @maxlength = "10", @class = "registerQuick" })%>
+                    <%=Html.Password("Password",  registerapply!=null ?registerapply.Password :"", new { @maxlength = "10", @class = "registerQuick" })%>
                     <%=Html.ValidationMessageFor(m=>m.Password)%>
                 </td>
             </tr>
@@ -97,7 +101,7 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.Password("confirmpassword",  registerapply!=null ?registerapply.ConfirmPassword :"", new { @maxlength = "10", @class = "registerQuick"})%>
+                    <%=Html.Password("ConfirmPassword",  registerapply!=null ?registerapply.ConfirmPassword :"", new { @maxlength = "10", @class = "registerQuick"})%>
                     <%=Html.ValidationMessageFor(m=>m.ConfirmPassword)%>
                 </td>
             </tr>
@@ -121,10 +125,7 @@
             <%=Html.ValidationMessage("captcha")%>
         </div>
         <div class="siteInfo">
-            <% using (Html.BeginForm("Register", "Account"))
-               { %>
-            <%= Html.AntiForgeryToken() %>
-            <%= Html.ValidationSummary(true) %>
+
             <button style="padding: 1px 0px; margin: 5px 0px 5px 50px;">
                 Register
             </button>

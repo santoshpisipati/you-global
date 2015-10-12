@@ -96,42 +96,42 @@
             }
 </style>
 <section id="loginForm">
-        @using (Html.BeginForm(new { ReturnUrl = retUrl }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-            <ol>
-                <li class="li">
-                    <h4 class="h4">@Html.LabelFor(m => m.UserName)</h4>
-                </li>
-                <li class="li">
-                    @Html.TextBoxFor(m => m.UserName)
-                    @Html.ValidationMessageFor(m => m.UserName)
-                </li>
-                <li class="li">
-                    <h4 class="h4">@Html.LabelFor(m => m.Password)</h4>
-                </li>
-                <li class="li">
-                    @Html.PasswordFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password)
-                </li>
-                <li class="li">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-                </li>
-                <li class="li">
-                    i want to @Html.DropDownListFor(m => m.LoggedInAs, new List<SelectListItem> { new SelectListItem { Text = "Apply For New job", Value = "1", Selected = true }, new SelectListItem { Text = "Post New Job", Value = "2" } })
-                </li>
+    @using (Html.BeginForm(new { ReturnUrl = retUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <ol>
+            <li class="li">
+                <h4 class="h4">@Html.LabelFor(m => m.UserName)</h4>
+            </li>
+            <li class="li">
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li class="li">
+                <h4 class="h4">@Html.LabelFor(m => m.Password)</h4>
+            </li>
+            <li class="li">
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li class="li">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+            <li class="li">
+                i want to @Html.DropDownListFor(m => m.LoggedInAs, new List<SelectListItem> { new SelectListItem { Text = "Apply For New job", Value = "1", Selected = true }, new SelectListItem { Text = "Post New Job", Value = "2" } })
+            </li>
 
-                <li class="li" style="margin-top:4px;">
-                    <input type="submit" id="login" style="height:30px;width:100px;text-align:center;" value="Log In">
-                </li>
-                <li class="li">
-                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                </li>
-                <li class="li">
-                    @Html.ActionLink("Register", "Register") if you don't have an account.
-                </li>
-            </ol>
-        }
+            <li class="li" style="margin-top:4px;">
+                <input type="submit" id="login" style="height:30px;width:100px;text-align:center;" value="Log In">
+            </li>
+            <li class="li">
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </li>
+            <li class="li">
+                @Html.ActionLink("Register", "Register") if you don't have an account.
+            </li>
+        </ol>
+    }
 </section>

@@ -264,6 +264,7 @@ ol.round {
 
 .txtbox{
     text-align:right;
+    color:green;
 }
 
 #leftInner {
@@ -1714,4 +1715,3 @@ a.trigger {
         display: inline;
         list-style: none;
     }
-

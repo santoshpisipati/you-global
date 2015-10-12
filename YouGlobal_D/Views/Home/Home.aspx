@@ -2,15 +2,14 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <meta name="google-site-verification" content="WPNgUkK3A5W2V5GcmCcfygV_YBOD6k4xjixUc1GKTa0" />
-    
+
     <script type="text/javascript">
         var currentNav = '#mainNavHome';
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="subheader">
-        <h2>
-            Welcome to the recruitment hot spot!</h2>
+        <h2>Welcome to the recruitment hot spot!</h2>
     </div>
     <div class="left_articles">
         <div class="bigimage" id="flashcontent">
@@ -18,11 +17,10 @@
                 var so = getRandomFlash();
                 so.addParam("scale", "noscale");
                 so.write("flashcontent");
-				    // ]]>
+                // ]]>
             </script>
         </div>
-        <h3>
-            Recruitment Service Divisions include
+        <h3>Recruitment Service Divisions include
         </h3>
         <div>
             <table>
@@ -51,8 +49,7 @@
                 <tr>
                     <td colspan="2">
                         <ul class="socialMedia-links">
-                            <li class="twitter"><a href="http://twitter.com/youglobal" title="Follow us on Twitter">
-                                Follow us on <strong>Twitter</strong></a></li>
+                            <li class="twitter"><a href="http://twitter.com/youglobal" title="Follow us on Twitter">Follow us on <strong>Twitter</strong></a></li>
                             <li class="facebook"><a href="http://www.facebook.com/YOUGlobal"
                                 title="Join us on Facebook">Join us on <strong>Facebook</strong></a></li>
                         </ul>
@@ -75,7 +72,8 @@
                 <%= Html.ActionLink("About Us", "AboutUs", "Home", null, new { @class = "title" })%></b><br />
             We firmly believe that in order to provide a professional and committed service
             to our clients, it is essential to remain focused on our objective of striving to
-            be the best in our business.<%= Html.ActionLink(" Read more...", "AboutUs", "Home", null, new { @class = "title" })%></p>
+            be the best in our business.<%= Html.ActionLink(" Read more...", "AboutUs", "Home", null, new { @class = "title" })%>
+        </p>
     </div>
     <div class="thirds">
         <p>

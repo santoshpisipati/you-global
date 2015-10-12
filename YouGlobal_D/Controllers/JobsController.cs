@@ -694,7 +694,6 @@ namespace YG_MVC.Controllers
             return drLocation;
         }
 
-
         public ActionResult SearchLocationWithId(string term)
         {
             KeyValuePair<string, string> kv = new KeyValuePair<string, string>();

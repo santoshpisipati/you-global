@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Main.Master" AutoEventWireup="true"   CodeBehind="Sky.master.cs" Inherits="YG_MVC.Views.Shared.Sky" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <div id="leftInner">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+    <div id="rightNav">
+        <asp:ContentPlaceHolder ID="SkyContent" runat="server" />
+        <ul class="socialMedia-links">
+            <li class="twitter"><a href="http://twitter.com/youglobal" title="Follow us on Twitter">Follow us on <strong>Twitter</strong></a></li>
+            <li class="facebook"><a href="http://www.facebook.com/YOUGlobal"
+                title="Join us on Facebook">Join us on <strong>Facebook</strong></a></li>
+        </ul>
+    </div>
+</asp:Content>

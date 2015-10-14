@@ -1,0 +1,84 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $(".openDialog").live("click", function (e) {
+            e.preventDefault();
+            $("<div></div>")
+                .addClass("dialog")
+                .attr("id", $(this)
+                .attr("data-dialog-id"))
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove(); },
+                    resizable: false,
+                    modal: true,
+                    height: 370,
+                    draggable: false,
+                    left: 0
+
+                })
+                .load(this.href);
+        });
+
+        $(".close").live("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>
+
+<style type="text/css">
+    #logoutForm {
+        display: inline;
+    }
+
+    .username {
+        word-wrap: normal;
+    }
+</style>
+
+@if (Session["username"] != null && !string.IsNullOrEmpty(Convert.ToString(Session["username"])))
+{
+    <nav>
+        <ul class="menuTemplate4">
+            <li class="">
+                @Html.Label("", Session["username"] != null ? Convert.ToString(Session["username"]).ToUpper() : "", new { @class = "username", title = "Manage" })
+                <div class="drop decor4_2" style="width: 125px;top: 21px;height: 60px;border-radius: 0;text-decoration: none;">
+                    <div>
+                        <nav>
+                            <ul class="menuTemplate4 decor4_1">
+                                @if (Session["loggedinas"] != null && !string.IsNullOrEmpty(Convert.ToString(Session["loggedinas"])))
+                                {
+                                    Int32 loggedIn = Convert.ToInt32(Session["loggedinas"]);
+                                    if (loggedIn == 1)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("JOB DETAILS", "AppliedJobDetails", "Account")
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            @Html.ActionLink("POST JOB", "PostJob", "Jobs")
+                                        </li>
+                                    }
+                                }
+                                <li>
+                                    @using (Html.BeginForm("Home", "Home", System.Web.Mvc.FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ActionLink("LOG OFF", "logOff", "Account")
+                                    }
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+}
+else
+{
+    @Html.ActionLink("LOGIN/SIGNUP", "Login", "Account", null, new { @class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login" })
+}

@@ -4,6 +4,20 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Sky.master" Inherits="System.Web.Mvc.ViewPage<YouGlobal_D.Models.PasswordModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script type="text/javascript">
+        function validateEmailId(email) {
+            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (expr.test(email)) {
+                mesg.innerHTML = "";
+                return true;
+            }
+            else {
+                mesg.style.color = "red";
+                mesg.innerHTML = "Please provide a valid email address";
+                return false;
+            }
+        }
+    </script>
     <style type="text/css">
         .registersubheadings {
             font: bold 15px "Arial";
@@ -63,8 +77,9 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("EmailId", registerapply!=null ? registerapply.EmailId :"", new { @maxlength = "100", @class = "registerQuick" })%>
+                    <%=Html.TextBox("EmailId", registerapply!=null ? registerapply.EmailId :"", new { @maxlength = "100", @class = "registerQuick" ,onblur="validateEmailId(this.value)"  })%>
                     <%=Html.ValidationMessageFor(m=>m.EmailId, "*", new { @class = "validationMessage" })%>
+                    <span id="mesg" style="font-size: small; position: relative;"></span>
                 </td>
             </tr>
             <%-- <tr>

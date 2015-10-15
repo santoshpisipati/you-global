@@ -6,7 +6,7 @@ namespace YG_DataAccess
 {
     public class AccountAccess
     {
-        public static MySqlDataReader AddMember(string firstName, string lastName, string password, Int64 phnNumber, DateTime date, string emailId)
+        public static MySqlDataReader AddMember(string firstName, string lastName, string password, string phnNumber, DateTime date, string emailId)
         {
             string sql = "insert into `globalpanda`.`members`(`firstname`,`lastname`,`email`,`password`,`phonenumber`,`isactive`,`createdon`)" +
                          "values (?firstname, ?lastname, ?email,  ?password,  ?phonenumber,?isactive,?createdon)";

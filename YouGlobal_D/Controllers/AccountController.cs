@@ -89,6 +89,7 @@ namespace YouGlobal_D.Controllers
             {
                 if (!captchaValid)
                 {
+                    ViewData["Message"] = "Invalid Captcha.";
                     ModelState.AddModelError("captcha", captchaErrorMessage);
                 }
                 else
@@ -97,17 +98,15 @@ namespace YouGlobal_D.Controllers
                     member.EmailId = model.Email;
                     member.FirstName = model.FirstName;
                     member.LastName = model.LastName;
-                    member.PhoneNo = !string.IsNullOrEmpty(model.PhoneNumber) ? Convert.ToInt64(model.PhoneNumber) : 0;
+                    member.PhoneNo = !string.IsNullOrEmpty(model.PhoneNumber) ? model.PhoneNumber: "";
                     if (!string.IsNullOrEmpty(model.Password))
                     {
                         member.Password = CryptorEngine.Encrypt(model.Password, true);
                         member.CreatedOn = DateTime.Now;
                         member.isActive = true;
                         Logininfo.AddMember(member);
-                        LoginModel login = new LoginModel();
-                        login.UserName = model.Email;
-                        login.Password = CryptorEngine.Encrypt(model.Password, true);
-                        return this.Login(login, "");
+                        ViewData["Message"] = "Registration Successful.";
+                        return View();
                     }
                 }
             }

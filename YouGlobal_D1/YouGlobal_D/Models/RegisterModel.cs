@@ -41,5 +41,7 @@ namespace YouGlobal_D.Models
 
          [Required(ErrorMessage = "Your must provide a PhoneNumber")]
         public string RegisterAs { get; set; }
+
+         public string PhoneCode { get; set; }
     }
 }

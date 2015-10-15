@@ -5,6 +5,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ScriptContent" runat="server">
     <style type="text/css">
+        .msg {
+            display: none;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
         .registersubheadings {
             font: bold 15px "Arial";
             padding: 1px 0px;
@@ -36,6 +48,39 @@
             color: #999;
         }
     </style>
+    <script type="text/javascript">
+        function onlyAlphabets(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode == 32) || (charCode == 45) || (charCode == 8) || (charCode == 9) || (charCode == 46) || (charCode == 189))
+                    return true;
+                else
+                    return false;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+
+        function validateEmailId(email) {
+            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (expr.test(email)) {
+                mesg.innerHTML = "";
+                return true;
+            }
+            else {
+                mesg.style.color = "red";
+                mesg.innerHTML = "Please provide a valid email address";
+                return false;
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -51,7 +96,7 @@
         <%= Html.AntiForgeryToken() %>
         <%= Html.ValidationSummary(true) %>
         <%
-                   var registerapply = (YouGlobal_D.Models.RegisterModel)Model;
+               var registerapply = (YouGlobal_D.Models.RegisterModel)Model;
         %>
         <h2 style="vertical-align: central; margin-top: 3%;">Register Here </h2>
         <table style="width: 100%; vertical-align: central; margin-top: 8%;">
@@ -61,7 +106,7 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("FirstName", registerapply!=null ? registerapply.FirstName :"", new { @maxlength = "100", @class = "registerQuick" })%>
+                    <%=Html.TextBox("FirstName", registerapply!=null ? registerapply.FirstName :"", new { @maxlength = "100", @class = "registerQuick", onkeydown="return onlyAlphabets(event,this);"  })%>
                     <%=Html.ValidationMessageFor(m=>m.FirstName, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
@@ -71,18 +116,19 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("LastName", registerapply!=null ? registerapply.LastName :"", new { @maxlength = "100", @class = "registerQuick"})%>
+                    <%=Html.TextBox("LastName", registerapply!=null ? registerapply.LastName :"", new { @maxlength = "100", @class = "registerQuick", onkeydown="return onlyAlphabets(event,this);"})%>
                     <%=Html.ValidationMessageFor(m=>m.LastName, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
-                <td class="registersubheadings">Email Id
+                <td class="registersubheadings">Email Address
                 </td>
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("Email",  registerapply!=null ?registerapply.Email :"", new { @maxlength = "100", @class = "registerQuick"})%>
+                    <%=Html.TextBox("Email",  registerapply!=null ?registerapply.Email :"", new { @maxlength = "100", @class = "registerQuick",onblur="validateEmailId(this.value)"})%>
                     <%=Html.ValidationMessageFor(m=>m.Email, "*", new { @class = "validationMessage" })%>
+                    <span id="mesg" style="font-size: small; position: relative;"></span>
                 </td>
             </tr>
             <tr>
@@ -106,6 +152,15 @@
                 </td>
             </tr>
             <tr>
+                <td class="registersubheadings">Country Code
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <%= Html.DropDownList("PhoneCode", new SelectList(((System.Data.DataTable)Session["PhoneCodes"]).Rows as System.Collections.IEnumerable, "[0]", "[0]"), new { @class = "fieldAdv" })%>
+                </td>
+            </tr>
+            <tr>
                 <td class="registersubheadings">Phone Number
                 </td>
             </tr>
@@ -116,7 +171,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="registersubheadings">Register As <%=Html.DropDownListFor(m => m.RegisterAs, new List<SelectListItem>{ new SelectListItem { Text = "Member", Value = "1", Selected = true }, new SelectListItem { Text = "Consultant", Value = "2" } })%>
+                <td class="registersubheadings">Register As <%=Html.DropDownListFor(m => m.RegisterAs, new List<SelectListItem>{ new SelectListItem { Text = "Jobseeker", Value = "1", Selected = true },
+                                                                                                       new SelectListItem { Text = "Employer", Value = "2" },
+                                                                                                       new SelectListItem { Text = "Recruitment consultant", Value = "3" },})%>
                 </td>
             </tr>
         </table>

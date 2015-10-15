@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YG_DataAccess", "YG_DataAcc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YG_Business", "YG_Business\YG_Business.csproj", "{EE21B576-70B7-40C3-8A68-F78B57E2501B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouGlobal_D1", "YouGlobal_D1\YouGlobal_D\YouGlobal_D1.csproj", "{66CC2C34-CAB2-4AD7-BC1F-27C1B1D34E6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EE21B576-70B7-40C3-8A68-F78B57E2501B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE21B576-70B7-40C3-8A68-F78B57E2501B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE21B576-70B7-40C3-8A68-F78B57E2501B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66CC2C34-CAB2-4AD7-BC1F-27C1B1D34E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CC2C34-CAB2-4AD7-BC1F-27C1B1D34E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CC2C34-CAB2-4AD7-BC1F-27C1B1D34E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CC2C34-CAB2-4AD7-BC1F-27C1B1D34E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

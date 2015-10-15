@@ -64,7 +64,7 @@
             <tr>
                 <td>
                     <%=Html.TextBox("EmailId", registerapply!=null ? registerapply.EmailId :"", new { @maxlength = "100", @class = "registerQuick" })%>
-                    <%=Html.ValidationMessageFor(m=>m.EmailId)%>
+                    <%=Html.ValidationMessageFor(m=>m.EmailId, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <%-- <tr>
@@ -84,7 +84,7 @@
             <tr>
                 <td>
                     <%=Html.Password("NewPassword",  registerapply!=null ?registerapply.NewPassword :"", new { @maxlength = "10", @class = "registerQuick"})%>
-                    <%=Html.ValidationMessageFor(m=>m.NewPassword)%>
+                    <%=Html.ValidationMessageFor(m=>m.NewPassword, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
@@ -94,7 +94,7 @@
             <tr>
                 <td>
                     <%=Html.Password("ConfirmPassword",  registerapply!=null ?registerapply.ConfirmPassword :"", new { @maxlength = "10", @class = "registerQuick" })%>
-                    <%=Html.ValidationMessageFor(m=>m.ConfirmPassword)%>
+                    <%=Html.ValidationMessageFor(m=>m.ConfirmPassword, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
         </table>

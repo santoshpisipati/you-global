@@ -579,7 +579,7 @@ namespace CommissionCalculator
                 {
                     return Math.Round(Convert.ToDouble(value.Substring(3, value.Length - 3)), 2);
                 }
-                return Math.Round(Convert.ToDouble(value.Trim()), 2); ;
+                return Math.Round(Convert.ToDouble(value.Trim()), 2);
             }
             return 0;
         }

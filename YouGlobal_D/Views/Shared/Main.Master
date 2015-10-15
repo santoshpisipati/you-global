@@ -130,6 +130,13 @@
                 </p>
                 <a href="/Jobs/JobListing.shtml" style="background: #ffffff; color: #ffffff; width: 1px; height: 1px; letter-spacing: -10px; font-size: 1px;">Job List</a>
             </div>
+            <% if (ViewData["Message"] != null)
+            {%>
+            <script type="text/javascript">
+                var test = '<%= ViewData["Message"].ToString() %>';
+                alert(test);
+            </script>
+            <% }%>
         </div>
     </div>
 </body>

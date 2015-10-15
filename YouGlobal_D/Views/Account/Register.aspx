@@ -62,7 +62,7 @@
             <tr>
                 <td>
                     <%=Html.TextBox("FirstName", registerapply!=null ? registerapply.FirstName :"", new { @maxlength = "100", @class = "registerQuick" })%>
-                    <%=Html.ValidationMessageFor(m=>m.FirstName)%>
+                    <%=Html.ValidationMessageFor(m=>m.FirstName, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@
             <tr>
                 <td>
                     <%=Html.TextBox("LastName", registerapply!=null ? registerapply.LastName :"", new { @maxlength = "100", @class = "registerQuick"})%>
-                    <%=Html.ValidationMessageFor(m=>m.LastName)%>
+                    <%=Html.ValidationMessageFor(m=>m.LastName, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@
             <tr>
                 <td>
                     <%=Html.TextBox("Email",  registerapply!=null ?registerapply.Email :"", new { @maxlength = "100", @class = "registerQuick"})%>
-                    <%=Html.ValidationMessageFor(m=>m.Email)%>
+                    <%=Html.ValidationMessageFor(m=>m.Email, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
@@ -92,7 +92,7 @@
             <tr>
                 <td>
                     <%=Html.Password("Password",  registerapply!=null ?registerapply.Password :"", new { @maxlength = "10", @class = "registerQuick" })%>
-                    <%=Html.ValidationMessageFor(m=>m.Password)%>
+                    <%=Html.ValidationMessageFor(m=>m.Password, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
@@ -102,7 +102,7 @@
             <tr>
                 <td>
                     <%=Html.Password("ConfirmPassword",  registerapply!=null ?registerapply.ConfirmPassword :"", new { @maxlength = "10", @class = "registerQuick"})%>
-                    <%=Html.ValidationMessageFor(m=>m.ConfirmPassword)%>
+                    <%=Html.ValidationMessageFor(m=>m.ConfirmPassword, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>
@@ -112,7 +112,7 @@
             <tr>
                 <td>
                     <%=Html.TextBox("phonenumber",  registerapply!=null ?registerapply.PhoneNumber :"", new { @maxlength = "10", @class = "registerQuick"})%>
-                    <%=Html.ValidationMessageFor(m=>m.PhoneNumber)%>
+                    <%=Html.ValidationMessageFor(m=>m.PhoneNumber, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
             <tr>

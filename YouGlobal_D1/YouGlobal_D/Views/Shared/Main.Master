@@ -24,6 +24,7 @@
         media="screen" />
     <link rel="stylesheet" type="text/css" href="../../Content/css/yg.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../Content/css/pagination.css" media="screen" />
+    
     <script type="text/javascript" src="../../Scripts/jquery.1.9.1.min.js"></script>
     <script>
         var jq9 = jQuery.noConflict();
@@ -134,7 +135,10 @@
                {%>
             <script type="text/javascript">
                 var test = '<%= ViewData["Message"].ToString() %>';
-                alert(test);
+                var r = alert(test);
+                if (test.indexOf("Successful") > -1) {
+                    window.location.href = '<%=Url.Action("Home", "Home")%>';
+                }
             </script>
             <% }%>
         </div>

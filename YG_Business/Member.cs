@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+
 namespace YG_Business
 {
     public class Member
@@ -11,7 +11,7 @@ namespace YG_Business
 
         public string EmailId { get; set; }
 
-        public Int64 PhoneNo { get; set; }
+        public string PhoneNo { get; set; }
 
         public string Password { get; set; }
 
@@ -24,5 +24,5 @@ namespace YG_Business
     {
         public string EmailId { get; set; }
         public string Password { get; set; }
-    }    
+    }
 }

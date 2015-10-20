@@ -80,6 +80,18 @@
                 return false;
             }
         }
+
+        function checklength(pswd) {
+            if (pswd.length >= 6) {
+                pwdmsg.innerHTML = "";
+                return true;
+            }
+            else {
+                pwdmsg.style.color = "red";
+                pwdmsg.innerHTML = "password should contain minimum 6 chars";
+                return false;
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -137,8 +149,9 @@
             </tr>
             <tr>
                 <td>
-                    <%=Html.Password("Password",  registerapply!=null ?registerapply.Password :"", new { @maxlength = "10", @class = "registerQuick" })%>
+                    <%=Html.Password("Password",  registerapply!=null ?registerapply.Password :"", new { @maxlength = "10", @class = "registerQuick" ,onblur="checklength(this.value)"})%>
                     <%=Html.ValidationMessageFor(m=>m.Password, "*", new { @class = "validationMessage" })%>
+                    <span id="pwdmsg" style="font-size: small; position: relative;"></span>
                 </td>
             </tr>
             <tr>

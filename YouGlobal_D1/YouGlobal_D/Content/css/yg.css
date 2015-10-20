@@ -554,7 +554,11 @@ b a.title {
         float: right;
         padding: 7px 10px;
     }
-/* End Footer */
+
+    #footer .left {
+        float: left;
+        padding: 7px 10px;
+    }/* End Footer */
 
 /* Right side Navigation */
 #rightNav {

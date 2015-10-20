@@ -24,7 +24,7 @@
         media="screen" />
     <link rel="stylesheet" type="text/css" href="../../Content/css/yg.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../Content/css/pagination.css" media="screen" />
-    
+
     <script type="text/javascript" src="../../Scripts/jquery.1.9.1.min.js"></script>
     <script>
         var jq9 = jQuery.noConflict();
@@ -128,6 +128,9 @@
             <div id="footer">
                 <p class="right">
                     &copy; 2009 YOU Global Consultants.&nbsp;&nbsp;All rights reserved.
+                </p>
+                <p class="left">
+                    <a href="http://www.google.com/intl/en/policies/" target="_blank">Privacy & Terms.</a>
                 </p>
                 <a href="/Jobs/JobListing.shtml" style="background: #ffffff; color: #ffffff; width: 1px; height: 1px; letter-spacing: -10px; font-size: 1px;">Job List</a>
             </div>

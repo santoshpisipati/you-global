@@ -16,6 +16,11 @@ namespace YouGlobal_D.Controllers
             return View();
         }
 
+        public ActionResult LoginPopUp()
+        {
+            return View();
+        }
+
         public ActionResult Register()
         {
             GetPhoneCodes();
@@ -47,9 +52,40 @@ namespace YouGlobal_D.Controllers
             {
                 DataTable dt = new DataTable();
                 Login login = new Login();
-                login.EmailId = model.UserName;
                 if (!string.IsNullOrEmpty(model.Password))
                 {
+                    login.EmailId = model.UserName;
+                    login.Password = CryptorEngine.Encrypt(model.Password, true);
+                    dt = Logininfo.GetLoginDetails(login);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        if (ModelState.IsValid)
+                        {
+                            Session["loggedinas"] = model.LoggedInAs;
+                            string userName = dt.Rows[0][1].ToString();
+                            Session["username"] = string.Format("Hello,{0}", userName);
+                            return RedirectToLocal(returnUrl);
+                        }
+                    }
+                }
+            }
+
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return PartialView("Login", model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult LoginPopUp(LoginModel model, string returnUrl)
+        {
+            if (model != null)
+            {
+                DataTable dt = new DataTable();
+                Login login = new Login();
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    login.EmailId = model.UserName;
                     login.Password = CryptorEngine.Encrypt(model.Password, true);
                     dt = Logininfo.GetLoginDetails(login);
                     if (dt != null && dt.Rows.Count > 0)
@@ -101,9 +137,9 @@ namespace YouGlobal_D.Controllers
                         Member member = new Member();
                         member.EmailId = model.Email;
                         member.FirstName = model.FirstName;
-                        member.LastName = model.LastName;
+                        member.LastName = model.LastName;                        
                         string[] result = model.PhoneCode.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
-                        member.PhoneNo = !string.IsNullOrEmpty(model.PhoneNumber) ? string.Format("{0} {1}", result[0], model.PhoneNumber) : "";
+                        member.PhoneNo = !string.IsNullOrEmpty(model.PhoneNumber) ? string.Format("{0} {1}", result[0], model.AreaCode, model.PhoneNumber) : "";
                         if (!string.IsNullOrEmpty(model.Password))
                         {
                             member.Password = CryptorEngine.Encrypt(model.Password, true);

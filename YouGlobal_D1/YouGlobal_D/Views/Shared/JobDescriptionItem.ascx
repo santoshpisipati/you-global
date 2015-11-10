@@ -48,18 +48,18 @@
                               {%>
                             <a class="jobrlist" style="color: Red" href='<%=Url.Action("ApplyOnline", "Work", new { reference = jobPosting.ReferenceNo })%>'>
                                 <font size="3"><span class="applicationLink">APPLY ONLINE</span></font></a>
-                            <%-- <%Html.ActionLink("LOGIN/SIGNUP", "Login", "Account", null, new { @class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login" })%>--%>
+                            <%-- <%Html.ActionLink("LOGIN/SIGNUP", "LoginPopUp", "Account", null, new { @class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login" })%>--%>
                             <% }%>
                             <%  else
                               {%>
                             <% using (Html.BeginForm(new { reference = jobPosting.ReferenceNo }))
                                {%>
-                            <%=Html.ActionLink("LOGIN/SIGNUP", "Login", "Account",  new { returnUrl = Url.Action("ApplyOnline", "Work", new { reference = jobPosting.ReferenceNo }) }, new { @class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login" })%>
+                            <%=Html.ActionLink("LOGIN/SIGNUP", "LoginPopUp", "Account",  new { returnUrl = Url.Action("ApplyOnline", "Work", new { reference = jobPosting.ReferenceNo }) }, new { @class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login" })%>
                             <% }%>
                             <% }%>
                         </td>
                     </tr>
-                    <tr>
+                    <tr>zz
                         <td align="right">
                             <a class="jobrlist" href='<%=Url.Action("EMailAFriend", "Work", new { id = jobPosting.JobId,title=jobPosting.Title,refe=jobPosting.ReferenceNo })%>'
                                 target="_parent"><font size="3"><span class="applicationLink">EMAIL TO A FRIEND</span></font></a>
@@ -178,7 +178,7 @@
                 <% }%>
                 <%  else
                   {%>
-                <%=Html.ActionLink("LOGIN/SIGNUP", "Login", "Account",new { returnUrl = Url.Action("ApplyOnline", "Work", new { reference = jobPosting.ReferenceNo }) }, new {@class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login"})%>
+                <%=Html.ActionLink("LOGIN/SIGNUP", "LoginPopUp", "Account",new { returnUrl = Url.Action("ApplyOnline", "Work", new { reference = jobPosting.ReferenceNo }) }, new {@class = "openDialog", data_dialog_id = "aboutlDialog", data_dialog_title = "Login"})%>
                 <% }%>
             </td>
         </tr>

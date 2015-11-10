@@ -93,9 +93,9 @@
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\..\..\..\..\..\Desktop\DUNST\DUNST TECHNOLOGIES\Info Dunst\Documents\Visual Studio 2013\Projects\YouGlobal_D\bin\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\youglobal\GlobalPanda\Bin\MySql.Data.dll</HintPath>
+      <HintPath>E:\Santosh_Folder\localhost_5753\YouGlobal_D\bin\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -154,7 +154,7 @@
     </Reference>
     <Reference Include="YG_Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\YG_Business\bin\Debug\YG_Business.dll</HintPath>
+      <HintPath>..\..\YG_Business\bin\Debug\YG_Business.dll</HintPath>
     </Reference>
     <Reference Include="YG_DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -766,11 +766,12 @@
     <Content Include="Scripts\ckeditor\composer.json" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\bower.json" />
-    <None Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Login.aspx" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
     <Content Include="Views\Jobs\PostJob.aspx" />
+    <Content Include="Views\Account\LoginPopup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1151,6 +1152,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper\HandleErrorsAttribute.cs" />
+    <Compile Include="ModalDialogExtensions.cs" />
     <Compile Include="Models\AppliedJobModel.cs" />
     <Compile Include="Models\EmailFriendModel.cs" />
     <Compile Include="Models\JobAlertModel.cs" />

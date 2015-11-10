@@ -369,8 +369,6 @@
                         <div class="keywordText">
                             <i>Begin typing to select one or more options.</i>
                         </div>
-                        <%--<input type="text" name="q" data-autocomplete="<%=Url.Action("SearchLocationWithId", "Jobs")%>" required="required" />
-                        <%=Html.ValidationMessageFor(m=>m.LocationId)%>--%>
                     </td>
                 </tr>
                 <tr>

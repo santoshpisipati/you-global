@@ -106,14 +106,14 @@
             </li>
             <li class="li">
                 @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName, "*", new { @class = "validationMessage" })
+                @Html.ValidationMessageFor(m => m.UserName)
             </li>
             <li class="li">
                 <h4 class="h4">@Html.LabelFor(m => m.Password)</h4>
             </li>
             <li class="li">
                 @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password, "*", new { @class = "validationMessage" })
+                @Html.ValidationMessageFor(m => m.Password)
             </li>
             <li class="li">
                 @Html.CheckBoxFor(m => m.RememberMe)

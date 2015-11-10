@@ -174,15 +174,26 @@
                 </td>
             </tr>
             <tr>
+                <td class="registersubheadings">Area Code
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <%=Html.TextBox("AreaCode", registerapply!=null ? registerapply.AreaCode :"", new { @maxlength = "4", @class = "registerQuick"})%>
+                    <%=Html.ValidationMessageFor(m=>m.AreaCode, "*", new { @class = "validationMessage" })%>
+                </td>
+            </tr>
+            <tr>
                 <td class="registersubheadings">Phone Number
                 </td>
             </tr>
             <tr>
                 <td>
-                    <%=Html.TextBox("phonenumber",  registerapply!=null ?registerapply.PhoneNumber :"", new { @maxlength = "10", @class = "registerQuick"})%>
+                    <%=Html.TextBox("phonenumber",  registerapply!=null ?registerapply.PhoneNumber :"", new { @maxlength = "100", @class = "registerQuick"})%>
                     <%=Html.ValidationMessageFor(m=>m.PhoneNumber, "*", new { @class = "validationMessage" })%>
                 </td>
             </tr>
+
             <tr>
                 <td class="registersubheadings">Register As <%=Html.DropDownListFor(m => m.RegisterAs, new List<SelectListItem>{ new SelectListItem { Text = "Jobseeker", Value = "1", Selected = true },
                                                                                                        new SelectListItem { Text = "Employer", Value = "2" },

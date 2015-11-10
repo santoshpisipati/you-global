@@ -43,5 +43,6 @@ namespace YouGlobal_D.Models
         public string RegisterAs { get; set; }
 
          public string PhoneCode { get; set; }
+         public string AreaCode { get; set; }
     }
 }

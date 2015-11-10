@@ -19,7 +19,7 @@
             text-align: center;
         }
     </style>
-    <asp:Panel runat="server" HorizontalAlign="Center" ID="converter">
+    <asp:Panel runat="server" Visible="false" HorizontalAlign="Center" ID="converter">
         <asp:Label runat="server" Font-Size="12" Text="AED / USD exchange rate :"></asp:Label>
         <asp:Label runat="server" ID="lblconvrate" Font-Size="12" Text=""></asp:Label>
     </asp:Panel>

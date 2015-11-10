@@ -50,10 +50,11 @@ namespace CommissionCalculator
                 //    +(D5*E5),B28*E5))
                 if (Convert.ToDouble(removeUSd(txtbox1.Text)) > Convert.ToDouble(removeUSd(d6.Text)))
                 {
-                    b29.Text = string.Format("USD {0}", Convert.ToString(Math.Round((((Convert.ToDouble(removeUSd(txtbox1.Text)) - Convert.ToDouble(removeUSd(d6.Text))) * TrimLastCharacter(e7.Text))
-                        + ((Convert.ToDouble(removeUSd(d6.Text)) - Convert.ToDouble(removeUSd(d5.Text))) * TrimLastCharacter(e6.Text))
-                        + (Convert.ToDouble(removeUSd(d5.Text)) * Convert.ToDouble(TrimLastCharacter(e5.Text)))))));
-                    b30.Text = Convert.ToString(Math.Round(((removeUSd(b29.Text) / removeUSd(txtbox1.Text))), 2)) + '%';
+                    b29.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox1.Text)) - Convert.ToDouble(removeUSd(d6.Text))) * TrimLastCharacter(e7.Text)) / 100)
+                        + (((Convert.ToDouble(removeUSd(d6.Text)) - Convert.ToDouble(removeUSd(d5.Text))) * TrimLastCharacter(e6.Text)) / 100)
+                        + ((Convert.ToDouble(removeUSd(d5.Text)) * Convert.ToDouble(TrimLastCharacter(e5.Text))) / 100)))));
+
+                    b30.Text = Convert.ToString(Math.Round(((removeUSd(b29.Text) / removeUSd(txtbox1.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -89,10 +90,10 @@ namespace CommissionCalculator
                 //    +(D5*E5),C28*E5))
                 if (Convert.ToDouble(removeUSd(txtbox2.Text)) > Convert.ToDouble(removeUSd(d6.Text)))
                 {
-                    c29.Text = string.Format("USD {0}", Convert.ToString(Math.Round((((removeUSd(txtbox2.Text) - removeUSd(d6.Text)) * TrimLastCharacter(e7.Text))
-                        + ((removeUSd(d6.Text) - removeUSd(d5.Text)) * TrimLastCharacter(e6.Text))
-                        + (removeUSd(d5.Text) * TrimLastCharacter(e5.Text))))));
-                    c30.Text = Convert.ToString(Math.Round(((removeUSd(c29.Text) / removeUSd(txtbox2.Text))), 2)) + '%';
+                    c29.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox2.Text)) - Convert.ToDouble(removeUSd(d6.Text))) * TrimLastCharacter(e7.Text)) / 100)
+                        + (((Convert.ToDouble(removeUSd(d6.Text)) - Convert.ToDouble(removeUSd(d5.Text))) * TrimLastCharacter(e6.Text)) / 100)
+                        + ((Convert.ToDouble(removeUSd(d5.Text)) * Convert.ToDouble(TrimLastCharacter(e5.Text))) / 100)))));
+                    c30.Text = Convert.ToString(Math.Round(((removeUSd(c29.Text) / removeUSd(txtbox2.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -130,10 +131,10 @@ namespace CommissionCalculator
                 double value = 0;
                 if (removeUSd(txtbox3.Text) > removeUSd(d6.Text))
                 {
-                    value = (((removeUSd(txtbox3.Text) - removeUSd(d6.Text)) * TrimLastCharacter(e7.Text))
-                        + ((removeUSd(d6.Text) - removeUSd(d5.Text)) * TrimLastCharacter(e6.Text))
-                        + (removeUSd(d5.Text) * TrimLastCharacter(e5.Text)));
-                    b30.Text = Convert.ToString(Math.Round(((removeUSd(b29.Text) / removeUSd(txtbox1.Text))), 2)) + '%';
+                    value = Math.Round(((((Convert.ToDouble(removeUSd(txtbox3.Text)) - Convert.ToDouble(removeUSd(d6.Text))) * TrimLastCharacter(e7.Text)) / 100)
+                                    + (((Convert.ToDouble(removeUSd(d6.Text)) - Convert.ToDouble(removeUSd(d5.Text))) * TrimLastCharacter(e6.Text)) / 100)
+                                    + ((Convert.ToDouble(removeUSd(d5.Text)) * Convert.ToDouble(TrimLastCharacter(e5.Text))) / 100)));
+                    b30.Text = Convert.ToString(Math.Round(((removeUSd(b29.Text) / removeUSd(txtbox1.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -180,9 +181,9 @@ namespace CommissionCalculator
                 double value = 0;
                 if (removeUSd(txtbox4.Text) > removeUSd(d6.Text))
                 {
-                    value = (((removeUSd(txtbox4.Text) - removeUSd(d6.Text)) * TrimLastCharacter(e7.Text))
-                        + ((removeUSd(d6.Text) - removeUSd(d5.Text)) * TrimLastCharacter(e6.Text))
-                        + (removeUSd(d5.Text) * TrimLastCharacter(e5.Text)));
+                    value = Math.Round(((((Convert.ToDouble(removeUSd(txtbox4.Text)) - Convert.ToDouble(removeUSd(d6.Text))) * TrimLastCharacter(e7.Text)) / 100)
+                                  + (((Convert.ToDouble(removeUSd(d6.Text)) - Convert.ToDouble(removeUSd(d5.Text))) * TrimLastCharacter(e6.Text)) / 100)
+                                  + ((Convert.ToDouble(removeUSd(d5.Text)) * Convert.ToDouble(TrimLastCharacter(e5.Text))) / 100)));
                 }
                 else
                 {
@@ -230,10 +231,11 @@ namespace CommissionCalculator
                 //    +(D12*E12),B35*E12))
                 if (Convert.ToDouble(removeUSd(txtbox6.Text)) > Convert.ToDouble(removeUSd(d13.Text)))
                 {
-                    b36.Text = string.Format("USD {0}", Convert.ToString(Math.Round((((Convert.ToDouble(removeUSd(txtbox6.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text))
-                        + ((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text))
-                        + (Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text)))))));
-                    b37.Text = Convert.ToString(Math.Round(((removeUSd(b36.Text) / removeUSd(txtbox6.Text))), 2)) + '%';
+                    b36.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox6.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text)) / 100)
+                       + (((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text)) / 100)
+                       + ((Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text))) / 100)))));
+
+                    b37.Text = Convert.ToString(Math.Round(((removeUSd(b36.Text) / removeUSd(txtbox6.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -268,10 +270,11 @@ namespace CommissionCalculator
                 //    +(D12*E12),C35*E12))
                 if (Convert.ToDouble(removeUSd(txtbox7.Text)) > Convert.ToDouble(removeUSd(d13.Text)))
                 {
-                    c36.Text = string.Format("USD {0}", Convert.ToString(Math.Round((((Convert.ToDouble(removeUSd(txtbox7.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text))
-                        + ((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text))
-                        + (Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text)))))));
-                    c37.Text = Convert.ToString(Math.Round(((removeUSd(c36.Text) / removeUSd(txtbox7.Text))), 2)) + '%';
+                    c36.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox7.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text)) / 100)
+                      + (((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text)) / 100)
+                      + ((Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text))) / 100)))));
+
+                    c37.Text = Convert.ToString(Math.Round(((removeUSd(c36.Text) / removeUSd(txtbox7.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -306,10 +309,11 @@ namespace CommissionCalculator
                 //    +(D12*E12),D35*E12))
                 if (Convert.ToDouble(removeUSd(txtbox8.Text)) > Convert.ToDouble(removeUSd(d13.Text)))
                 {
-                    d36.Text = string.Format("USD {0}", Convert.ToString(Math.Round((((Convert.ToDouble(removeUSd(txtbox8.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text)
-                        + ((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text))
-                        + (Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text))))))));
-                    d37.Text = Convert.ToString(Math.Round(((removeUSd(d36.Text) / removeUSd(txtbox8.Text))), 2)) + '%';
+                    d36.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox8.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text)) / 100)
+                      + (((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text)) / 100)
+                      + ((Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text))) / 100)))));
+
+                    d37.Text = Convert.ToString(Math.Round(((removeUSd(d36.Text) / removeUSd(txtbox8.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -344,10 +348,11 @@ namespace CommissionCalculator
                 //    +(D12*E12),E35*E12))
                 if (Convert.ToDouble(removeUSd(txtbox9.Text)) > Convert.ToDouble(removeUSd(d13.Text)))
                 {
-                    e36.Text = string.Format("USD {0}", Convert.ToString((((Convert.ToDouble(removeUSd(txtbox9.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text))
-                        + ((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text))
-                        + (Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text))))));
-                    e37.Text = Convert.ToString(Math.Round(((removeUSd(e36.Text) / removeUSd(txtbox9.Text))), 2)) + '%';
+                    e36.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox9.Text)) - Convert.ToDouble(removeUSd(d13.Text))) * TrimLastCharacter(e14.Text)) / 100)
+                      + (((Convert.ToDouble(removeUSd(d13.Text)) - Convert.ToDouble(removeUSd(d12.Text))) * TrimLastCharacter(e13.Text)) / 100)
+                      + ((Convert.ToDouble(removeUSd(d12.Text)) * Convert.ToDouble(TrimLastCharacter(e12.Text))) / 100)))));
+
+                    e37.Text = Convert.ToString(Math.Round(((removeUSd(e36.Text) / removeUSd(txtbox9.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -386,10 +391,11 @@ namespace CommissionCalculator
                 //    +(D19*E19),B42*E19))
                 if (Convert.ToDouble(removeUSd(txtbox11.Text)) > Convert.ToDouble(removeUSd(d20.Text)))
                 {
-                    b43.Text = string.Format("USD {0}", Convert.ToString((((Convert.ToDouble(removeUSd(txtbox11.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text))
-                        + ((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text))
-                        + (Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))))));
-                    b44.Text = Convert.ToString(Math.Round(((removeUSd(b43.Text) / removeUSd(txtbox11.Text))), 2)) + '%';
+                    b43.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox11.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text)) / 100)
+                                         + (((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text)) / 100)
+                                         + ((Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))) / 100)))));
+
+                    b44.Text = Convert.ToString(Math.Round(((removeUSd(b43.Text) / removeUSd(txtbox11.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -424,10 +430,11 @@ namespace CommissionCalculator
                 //    +(D19*E19),C42*E19))
                 if (Convert.ToDouble(removeUSd(txtbox12.Text)) > Convert.ToDouble(removeUSd(d20.Text)))
                 {
-                    c43.Text = string.Format("USD {0}", Convert.ToString((((Convert.ToDouble(removeUSd(txtbox12.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text))
-                        + ((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text))
-                        + (Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))))));
-                    c44.Text = Convert.ToString(Math.Round(((removeUSd(c43.Text) / removeUSd(txtbox12.Text))), 2)) + '%';
+                    c43.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox12.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text)) / 100)
+                                        + (((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text)) / 100)
+                                        + ((Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))) / 100)))));
+
+                    c44.Text = Convert.ToString(Math.Round(((removeUSd(b43.Text) / removeUSd(txtbox12.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -463,10 +470,11 @@ namespace CommissionCalculator
                 //    +(D19*E19),D42*E19))
                 if (Convert.ToDouble(removeUSd(txtbox13.Text)) > Convert.ToDouble(removeUSd(d20.Text)))
                 {
-                    d43.Text = string.Format("USD {0}", Convert.ToString((((Convert.ToDouble(removeUSd(txtbox13.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text))
-                        + ((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text))
-                        + (Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))))));
-                    d44.Text = Convert.ToString(Math.Round(((removeUSd(d43.Text) / removeUSd(txtbox13.Text))), 2)) + '%';
+                    d43.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox13.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text)) / 100)
+                                       + (((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text)) / 100)
+                                       + ((Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))) / 100)))));
+
+                    d44.Text = Convert.ToString(Math.Round(((removeUSd(b43.Text) / removeUSd(txtbox13.Text)) * 100), 2)) + '%';
                 }
                 else
                 {
@@ -502,10 +510,11 @@ namespace CommissionCalculator
                 //    +(D19*E19),E42*E19))
                 if (Convert.ToDouble(removeUSd(txtbox14.Text)) > Convert.ToDouble(removeUSd(d20.Text)))
                 {
-                    e43.Text = string.Format("USD {0}", Convert.ToString((((Convert.ToDouble(removeUSd(txtbox14.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text))
-                        + ((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text))
-                        + (Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))))));
-                    e44.Text = Convert.ToString(Math.Round(((removeUSd(e43.Text) / removeUSd(txtbox14.Text))), 2)) + '%';
+                    e43.Text = string.Format("USD {0}", Convert.ToString(Math.Round(((((Convert.ToDouble(removeUSd(txtbox14.Text)) - Convert.ToDouble(removeUSd(d20.Text))) * TrimLastCharacter(e21.Text)) / 100)
+                                      + (((Convert.ToDouble(removeUSd(d20.Text)) - Convert.ToDouble(removeUSd(d19.Text))) * TrimLastCharacter(e20.Text)) / 100)
+                                      + ((Convert.ToDouble(removeUSd(d19.Text)) * Convert.ToDouble(TrimLastCharacter(e19.Text))) / 100)))));
+
+                    e44.Text = Convert.ToString(Math.Round(((removeUSd(b43.Text) / removeUSd(txtbox14.Text)) * 100), 2)) + '%';
                 }
                 else
                 {

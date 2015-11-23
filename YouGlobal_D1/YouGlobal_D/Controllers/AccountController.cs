@@ -50,24 +50,31 @@ namespace YouGlobal_D.Controllers
         {
             if (model != null)
             {
-                DataTable dt = new DataTable();
-                Login login = new Login();
-                if (!string.IsNullOrEmpty(model.Password))
+                if (!string.IsNullOrEmpty(model.UserName))
                 {
-                    login.EmailId = model.UserName;
-                    login.Password = CryptorEngine.Encrypt(model.Password, true);
-                    dt = Logininfo.GetLoginDetails(login);
-                    if (dt != null && dt.Rows.Count > 0)
+                    DataTable dt = new DataTable();
+                    Login login = new Login();
+                    if (!string.IsNullOrEmpty(model.Password))
                     {
-                        if (ModelState.IsValid)
+                        login.EmailId = model.UserName;
+                        login.Password = CryptorEngine.Encrypt(model.Password, true);
+                        dt = Logininfo.GetLoginDetails(login);
+                        if (dt != null && dt.Rows.Count > 0)
                         {
-                            Session["loggedinas"] = model.LoggedInAs;
-                            string userName = dt.Rows[0][1].ToString();
-                            Session["username"] = string.Format("Hello,{0}", userName);
-                            return RedirectToLocal(returnUrl);
+                            if (ModelState.IsValid)
+                            {
+                                Session["loggedinas"] = model.LoggedInAs;
+                                string userName = dt.Rows[0][1].ToString();
+                                Session["username"] = string.Format("Hello,{0}", userName);
+                                return RedirectToLocal(returnUrl);
+                            }
                         }
                     }
+                    ModelState.AddModelError("", "password cannot be empty.");
+                    return PartialView("Login", model);
                 }
+                ModelState.AddModelError("", "username cannot be empty.");
+                return PartialView("Login", model);
             }
 
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
@@ -137,7 +144,7 @@ namespace YouGlobal_D.Controllers
                         Member member = new Member();
                         member.EmailId = model.Email;
                         member.FirstName = model.FirstName;
-                        member.LastName = model.LastName;                        
+                        member.LastName = model.LastName;
                         string[] result = model.PhoneCode.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
                         member.PhoneNo = !string.IsNullOrEmpty(model.PhoneNumber) ? string.Format("{0} {1}", result[0], model.AreaCode, model.PhoneNumber) : "";
                         if (!string.IsNullOrEmpty(model.Password))
